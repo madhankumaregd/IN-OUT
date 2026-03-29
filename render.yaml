@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: in-out-finance-tracker
+    runtime: node
+    repo: https://github.com/madhankumaregd/IN-OUT
+    plan: free
+    branch: main
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: inout-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        sync: false
+
+databases:
+  - name: inout-db
+    plan: free
+    databaseName: inout_finance
+    user: inout_user
