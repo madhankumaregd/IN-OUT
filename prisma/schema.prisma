@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"  // Change from "sqlite" to "postgresql"
-  url      = env("postgresql://inout_finance_user:elMpdf8mofXLje4MHZfMUBTaoXCRCsMe@dpg-d74j2aeuk2gs73a66reg-a/inout_finance")
+  url = env("DATABASE_URL")
 }
 
 model User {
